@@ -1,0 +1,379 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+---
+################################################################################
+#
+#   Section: Organizations
+#
+#   - This section defines the different organizational identities which will
+#   be referenced later in the configuration.
+#
+################################################################################
+Organizations:
+
+    - &OrdererOrg
+        Name: OrdererOrg
+        ID: OrdererMSP
+        MSPDir: crypto-config/ordererOrganizations/example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('OrdererMSP.member')"
+            Writers:
+                Type: Signature
+                Rule: "OR('OrdererMSP.member')"
+            Admins:
+                Type: Signature
+                Rule: "OR('OrdererMSP.admin')"
+
+    - &Org1
+        Name: Org1MSP
+        ID: Org1MSP
+        MSPDir: crypto-config/peerOrganizations/org1.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('Org1MSP.admin', 'Org1MSP.peer', 'Org1MSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('Org1MSP.admin', 'Org1MSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('Org1MSP.admin')"
+
+        AnchorPeers:
+            - Host: peer0.org1.example.com
+              Port: 7051
+
+    - &Org2
+        Name: Org2MSP
+        ID: Org2MSP
+        MSPDir: crypto-config/peerOrganizations/org2.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('Org2MSP.admin', 'Org2MSP.peer', 'Org2MSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('Org2MSP.admin', 'Org2MSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('Org2MSP.admin')"
+
+        AnchorPeers:
+            - Host: peer0.org2.example.com
+              Port: 7051
+
+    - &Org3
+        Name: Org3MSP
+        ID: Org3MSP
+        MSPDir: crypto-config/peerOrganizations/org3.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('Org3MSP.admin', 'Org3MSP.peer', 'Org3MSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('Org3MSP.admin', 'Org3MSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('Org3MSP.admin')"
+
+        AnchorPeers:
+            - Host: peer0.org3.example.com
+              Port: 7051
+
+    - &Org4
+        Name: Org4MSP
+        ID: Org4MSP
+        MSPDir: crypto-config/peerOrganizations/org4.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('Org4MSP.admin', 'Org4MSP.peer', 'Org4MSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('Org4MSP.admin', 'Org4MSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('Org4MSP.admin')"
+
+        AnchorPeers:
+            - Host: peer0.org4.example.com
+              Port: 7051
+
+    - &Org5
+        Name: Org5MSP
+        ID: Org5MSP
+        MSPDir: crypto-config/peerOrganizations/org5.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('Org5MSP.admin', 'Org5MSP.peer', 'Org5MSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('Org5MSP.admin', 'Org5MSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('Org5MSP.admin')"
+
+        AnchorPeers:
+            - Host: peer0.org5.example.com
+              Port: 7051
+
+    - &Org6
+        Name: Org6MSP
+        ID: Org6MSP
+        MSPDir: crypto-config/peerOrganizations/org6.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('Org6MSP.admin', 'Org6MSP.peer', 'Org6MSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('Org6MSP.admin', 'Org6MSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('Org6MSP.admin')"
+
+        AnchorPeers:
+            - Host: peer0.org6.example.com
+              Port: 7051
+
+    - &Org7
+        Name: Org7MSP
+        ID: Org7MSP
+        MSPDir: crypto-config/peerOrganizations/org7.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('Org7MSP.admin', 'Org7MSP.peer', 'Org7MSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('Org7MSP.admin', 'Org7MSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('Org7MSP.admin')"
+
+        AnchorPeers:
+            - Host: peer0.org7.example.com
+              Port: 7051
+
+    - &Org8
+        Name: Org8MSP
+        ID: Org8MSP
+        MSPDir: crypto-config/peerOrganizations/org8.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('Org8MSP.admin', 'Org8MSP.peer', 'Org8MSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('Org8MSP.admin', 'Org8MSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('Org8MSP.admin')"
+
+        AnchorPeers:
+            - Host: peer0.org8.example.com
+              Port: 7051
+
+    - &Org9
+        Name: Org9MSP
+        ID: Org9MSP
+        MSPDir: crypto-config/peerOrganizations/org9.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('Org9MSP.admin', 'Org9MSP.peer', 'Org9MSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('Org9MSP.admin', 'Org9MSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('Org9MSP.admin')"
+
+        AnchorPeers:
+            - Host: peer0.org9.example.com
+              Port: 7051
+
+    - &Org10
+        Name: Org10MSP
+        ID: Org10MSP
+        MSPDir: crypto-config/peerOrganizations/org10.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('Org10MSP.admin', 'Org10MSP.peer', 'Org10MSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('Org10MSP.admin', 'Org10MSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('Org10MSP.admin')"
+
+        AnchorPeers:
+            - Host: peer0.org10.example.com
+              Port: 7051
+
+################################################################################
+#
+#   SECTION: Capabilities
+#
+#   - This section defines the capabilities of fabric network. This is a new
+#   concept as of v1.1.0 and should not be utilized in mixed networks with
+#   v1.0.x peers and orderers.  Capabilities define features which must be
+#   present in a fabric binary for that binary to safely participate in the
+#   fabric network.  For instance, if a new MSP type is added, newer binaries
+#   might recognize and validate the signatures from this type, while older
+#   binaries without this support would be unable to validate those
+#   transactions.  This could lead to different versions of the fabric binaries
+#   having different world states.  Instead, defining a capability for a channel
+#   informs those binaries without this capability that they must cease
+#   processing transactions until they have been upgraded.  For v1.0.x if any
+#   capabilities are defined (including a map with all capabilities turned off)
+#   then the v1.0.x peer will deliberately crash.
+#
+################################################################################
+Capabilities:
+    Global: &ChannelCapabilities
+        V1_1: true
+    Orderer: &OrdererCapabilities
+        V1_1: true
+    Application: &ApplicationCapabilities
+        V1_2: true
+
+################################################################################
+#
+#   SECTION: Application
+#
+#   - This section defines the values to encode into a config transaction or
+#   genesis block for application related parameters
+#
+################################################################################
+Application: &ApplicationDefaults
+    Organizations:
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+    Capabilities:
+        <<: *ApplicationCapabilities
+
+################################################################################
+#
+#   SECTION: Orderer
+#
+#   - This section defines the values to encode into a config transaction or
+#   genesis block for orderer related parameters
+#
+################################################################################
+Orderer: &OrdererDefaults
+    OrdererType: kafka
+    Addresses:
+        - orderer0.example.com:7050
+        - orderer1.example.com:7050
+        - orderer2.example.com:7050
+    BatchTimeout: 2s
+    BatchSize:
+        MaxMessageCount: 500
+        AbsoluteMaxBytes: 99 MB
+        PreferredMaxBytes: 2048 KB
+    Kafka:
+        Brokers:
+            - kafka0:9092
+            - kafka1:9092
+            - kafka2:9092
+            - kafka3:9092
+    Organizations:
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+        BlockValidation:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+    Capabilities:
+        <<: *OrdererCapabilities
+
+################################################################################
+#
+#   CHANNEL
+#
+#   This section defines the values to encode into a config transaction or
+#   genesis block for channel related parameters.
+#
+################################################################################
+Channel: &ChannelDefaults
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+    Capabilities:
+        <<: *ChannelCapabilities
+
+################################################################################
+#
+#   Profile
+#
+#   - Different configuration profiles may be encoded here to be specified
+#   as parameters to the configtxgen tool
+#
+################################################################################
+Profiles:
+    TwoOrgsOrdererGenesis:
+        <<: *ChannelDefaults
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *OrdererOrg
+        Consortiums:
+            SampleConsortium:
+                Organizations:
+                    - *Org1
+                    - *Org2
+                    - *Org3
+                    - *Org4
+                    - *Org5
+                    - *Org6
+                    - *Org7
+                    - *Org8
+                    - *Org9
+                    - *Org10
+
+    TwoOrgsChannel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org1
+                - *Org2
+                - *Org3
+                - *Org4
+                - *Org5
+                - *Org6
+                - *Org7
+                - *Org8
+                - *Org9
+                - *Org10

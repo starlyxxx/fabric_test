@@ -1,6 +1,5 @@
 ##############################
 # Sisi Duan. Assistant Professor. University of Maryland, Baltimore County
-# Xin Wang. Phd Student. University of Maryland, Baltimore County
 ##############################
 
 import argparse
@@ -16,8 +15,11 @@ from config import config
 
 your_key_path = "~/.ssh/id_rsa"
 your_key_name = "id_rsa"
-Org = 10
+Org = 5
 Peer = 10
+Zookeeper = 3
+Kafka = 4
+Orderer = 3
 
 if not boto.config.has_section('ec2'):
     boto.config.add_section('ec2')
@@ -235,29 +237,40 @@ def idParallel():
         except:
             popen = Popen(['bash',bashfilename])
 
-def customize():
+def kafkapeer():
     config(Org,Peer)
 
 def gf():
     orgIP = []
     orgIP = getIP()
-    call('fab -i %s -H ubuntu@%s getfile' %(your_key_path,orgIP[1]), shell=True) 
+    call('fab -i %s -H ubuntu@%s getfile' %(your_key_path,orgIP[Kafka]), shell=True) 
     c(getIP(), 'putfile')
 
 def bringUpOrgs():
     orgIP = []
     orgIP = getIP()
-    call('fab -i %s -H ubuntu@%s bringUpOrgsOrderer' %(your_key_path,orgIP[0]), shell=True) 
+    for i in range(0,Zookeeper):
+        call('fab -i %s -H ubuntu@%s bringUpZookeeper %d' %(your_key_path,orgIP[i],i), shell=True)
+    for i in range(0,Kafka):
+        call('fab -i %s -H ubuntu@%s bringUpKafka %d' %(your_key_path,orgIP[i],i), shell=True)
+    for i in range(0,Orderer):
+        call('fab -i %s -H ubuntu@%s bringUpOrderer %d' %(your_key_path,orgIP[i],i), shell=True)
+    count = Kafka
     for i in range(1,Org+1):
-        call('fab -i %s -H ubuntu@%s bringUpOrgs %d' %(your_key_path,orgIP[i],i), shell=True)
+        call('fab -i %s -H ubuntu@%s bringUpOrgs %d' %(your_key_path,orgIP[count],i), shell=True)
+        count+=1
 
 def getlog():
     orgIP = []
     orgIP = getIP()
+    count = Kafka
     for i in range(1,Org+1):
-        call('fab -i %s -H ubuntu@%s getlog %d %d' %(your_key_path,orgIP[i],i,Peer), shell=True) 
+        call('fab -i %s -H ubuntu@%s getlog %d %d' %(your_key_path,orgIP[count],i,Peer), shell=True) 
+        count+=1
+    count = Kafka
     for i in range(1,Org+1):
-        call('fab -i %s -H ubuntu@%s storelog %d' %(your_key_path,orgIP[i],i), shell=True) 
+        call('fab -i %s -H ubuntu@%s storelog %d' %(your_key_path,orgIP[count],i), shell=True) 
+        count+=1
 
 if  __name__ =='__main__':
   try: __IPYTHON__

@@ -1,9 +1,12 @@
-#!/bin/bash
+#!/bin/bash -e
 #
 # Copyright IBM Corp All Rights Reserved
 #
 # SPDX-License-Identifier: Apache-2.0
 #
+# exit on first error
+
+export BASE_FOLDER=$WORKSPACE/gopath/src/github.com/hyperledger
 export ORG_NAME="hyperledger/fabric"
 
 Parse_Arguments() {
@@ -15,11 +18,17 @@ Parse_Arguments() {
                       --pull_Docker_Images)
                             pull_Docker_Images
                             ;;
+                      --pull_Fabric_CA_Images)
+                            pull_Fabric_CA_Images
+                            ;;
                       --clean_Environment)
                             clean_Environment
                             ;;
-		      --byfn_eyfn_Tests)
+                      --byfn_eyfn_Tests)
                             byfn_eyfn_Tests
+                            ;;
+                      --fabcar_Tests)
+                            fabcar_Tests
                             ;;
                       --pull_Thirdparty_Images)
                             pull_Thirdparty_Images
@@ -52,6 +61,9 @@ function removeUnwantedImages() {
   done
 }
 
+# Remove /tmp/fabric-shim
+docker run -v /tmp:/tmp library/alpine rm -rf /tmp/fabric-shim || true
+
 # remove tmp/hfc and hfc-key-store data
 rm -rf /home/jenkins/.nvm /home/jenkins/npm /tmp/fabric-shim /tmp/hfc* /tmp/npm* /home/jenkins/kvsTemp /home/jenkins/.hfc-key-store
 
@@ -81,10 +93,10 @@ env_Info() {
 	pgrep -a docker
 }
 
-# Pull Thirdparty Docker images (Kafka, couchdb, zookeeper)
+# Pull Thirdparty Docker images (kafka, couchdb, zookeeper baseos)
 pull_Thirdparty_Images() {
-            echo "-----------> BASE_IMAGE_TAG:" $BASE_IMAGE_TAG
-            for IMAGES in kafka couchdb zookeeper; do
+            echo "------> BASE_IMAGE_TAG:" $BASE_IMAGE_TAG
+            for IMAGES in kafka couchdb zookeeper baseos; do
                  echo "-----------> Pull $IMAGES image"
                  echo
                  docker pull $ORG_NAME-$IMAGES:${BASE_IMAGE_TAG} > /dev/null 2>&1
@@ -93,15 +105,15 @@ pull_Thirdparty_Images() {
                        exit 1
                  fi
                  docker tag $ORG_NAME-$IMAGES:${BASE_IMAGE_TAG} $ORG_NAME-$IMAGES
+                 docker tag $ORG_NAME-$IMAGES:${BASE_IMAGE_TAG} $ORG_NAME-$IMAGES:$VERSION
             done
                  echo
                  docker images | grep hyperledger/fabric
 }
-# pull fabric, fabric-ca images from nexus
+# pull Docker images from nexus
 pull_Docker_Images() {
-            echo "----------> VERSION:" $VERSION
-            for IMAGES in peer orderer tools ccenv ca; do
-                 echo "-----------> Pull $IMAGES image"
+            for IMAGES in ca peer orderer tools ccenv; do
+                 echo "-----------> pull $IMAGES image"
                  echo
                  docker pull $ORG_NAME-$IMAGES:$VERSION > /dev/null 2>&1
                  if [ $? -ne 0 ]; then
@@ -116,11 +128,16 @@ pull_Docker_Images() {
 
 # run byfn,eyfn tests
 byfn_eyfn_Tests() {
-	echo
-	echo "-----------> Execute Byfn and Eyfn Tests"
-	./byfn_eyfn.sh
-        if [ $? -ne 0 ]; then
-              echo -e "\033[31m BYFN tests are FAILED" "\033[0m"
-        fi
+                 echo
+                 echo "-----------> Execute Byfn and Eyfn Tests"
+                 ./byfn_eyfn.sh
+}
+# run fabcar tests
+fabcar_Tests() {
+                 echo
+                 echo "npm version ------> $(npm -v)"
+                 echo "node version ------> $(node -v)"
+                 echo "-----------> Execute FabCar Tests"
+                 ./fabcar.sh
 }
 Parse_Arguments $@

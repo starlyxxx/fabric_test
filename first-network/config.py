@@ -1,6 +1,6 @@
 ##############
 # Author: Starly
-# Goal: Customize the Hyperledger Fabric Configurations
+# Goal: Customize the Hyperledger Fabric Configurations(local)
 ##############
 
 import os

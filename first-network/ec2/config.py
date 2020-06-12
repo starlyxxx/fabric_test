@@ -1,72 +1,111 @@
 ##############
 # Author: Starly
-# Goal: Customize the Hyperledger Fabric Configurations(ec2/solo)
+# Goal: Customize the Hyperledger Fabric Configurations(ec2/kafka)
 ##############
 
 import os
 import sys
 
-def docker_compose_orderer(Org,Peer,ip):
-    f = open('../../customize/depolyment/docker-compose-orderer.yml','a')
-    count = 1
+def docker_compose_zookeeperX(Zookeeper,Kafka,ip):
+    for i in range(0,Zookeeper):
+        f = open('../../kafkapeer/docker-compose-zookeeper%d.yaml'%i,'a')
+        count = 0
+        for ii in range(0,Zookeeper):
+            f.write('      - "zookeeper%d:%s"\n'%(ii,ip[count]))
+            count+=1
+        count = 0
+        for jj in range(0,Kafka):
+            f.write('      - "kafka%d:%s"\n'%(jj,ip[count]))
+            count+=1
+        f.close()
+
+def docker_compose_kafkaX(Zookeeper,Kafka,ip):
+    for i in range(0,Kafka):
+        f = open('../../kafkapeer/docker-compose-kafka%d.yaml'%i,'a')
+        count = 0
+        for ii in range(0,Zookeeper):
+            f.write('      - "zookeeper%d:%s"\n'%(ii,ip[count]))
+            count+=1
+        count = 0
+        for jj in range(0,Kafka):
+            f.write('      - "kafka%d:%s"\n'%(jj,ip[count]))
+            count+=1
+        f.close()
+
+def docker_compose_ordererX(Orderer,Kafka,ip):
+    for i in range(0,Orderer):
+        f = open('../../kafkapeer/docker-compose-orderer%d.yaml'%i,'a')
+        count = 0
+        for jj in range(0,Kafka):
+            f.write('      - "kafka%d:%s"\n'%(jj,ip[count]))
+            count+=1
+        f.close()
+
+def docker_compose_peer_orgX(Org,Peer,Orderer,ip):
     for i in range(1,Org+1):
-        for j in range(Peer):
-            f.write('            - "peer%d.org%d.example.com:%s"\n'%(j,i,ip[count]))
-        count+=1
-    f.close()
+        portcount = 0
+        f = open('../../kafkapeer/docker-compose-peer-org%d.yaml'%i,'a')
+        f.write('version: \'2\'\n\nnetworks:\n  fabric:\n\nservices:\n  cli:\n    container_name: cli\n    image: hyperledger/fabric-tools\n    tty: true\n    environment:\n      - GOPATH=/opt/gopath\n      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock\n      - CORE_LOGGING_LEVEL=DEBUG\n      - CORE_PEER_ID=cli\n      - CORE_PEER_ADDRESS=peer0.org%d.example.com:7051\n      - CORE_PEER_LOCALMSPID=Org%dMSP\n      - CORE_PEER_TLS_ENABLED=true\n      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org%d.example.com/peers/peer0.org%d.example.com/tls/server.crt\n      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org%d.example.com/peers/peer0.org%d.example.com/tls/server.key\n      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org%d.example.com/peers/peer0.org%d.example.com/tls/ca.crt\n      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org%d.example.com/users/Admin@org%d.example.com/msp\n      - CORE_CHAINCODE_KEEPALIVE=10\n    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer\n    volumes:\n        - /var/run/:/host/var/run/\n        - ./chaincode/go/:/opt/gopath/src/github.com/hyperledger/fabric/kafkapeer/chaincode/go\n        - ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/\n        - ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts\n    networks:\n        - fabric\n    extra_hosts:\n'%(i,i,i,i,i,i,i,i,i,i))
+        count = 0
+        for ii in range(0,Orderer):
+            f.write('      - "orderer%d.example.com:%s"\n'%(ii,ip[count]))
+            count+=1
+        count = 4   # Should be equal to the Kafka number
+        for jj in range(1,Org+1):
+            for zz in range(0,Peer):
+                f.write('      - "peer%d.org%d.example.com:%s"\n'%(zz,jj,ip[count]))
+            count+=1
+        for z in range(0,Peer):
+            port = 7051 + 100*portcount
+            f.write('\n  peer%d.org%d.example.com:\n    container_name: peer%d.org%d.example.com\n    hostname: peer%d.org%d.example.com\n    image: hyperledger/fabric-peer\n    environment:\n       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_fabric\n       - CORE_PEER_ID=peer%d.org%d.example.com\n       - CORE_PEER_ADDRESS=peer%d.org%d.example.com:%d\n       - CORE_PEER_CHAINCODELISTENADDRESS=peer%d.org%d.example.com:%d\n       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer%d.org%d.example.com:%d\n       - CORE_PEER_LOCALMSPID=Org%dMSP\n       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock\n       - CORE_LOGGING_LEVEL=DEBUG\n       - CORE_PEER_GOSSIP_USELEADERELECTION=true\n       - CORE_PEER_GOSSIP_ORGLEADER=false\n       - CORE_PEER_PROFILE_ENABLED=true\n       - CORE_PEER_TLS_ENABLED=true\n       - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt\n       - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key\n       - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt\n    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer\n    command: peer node start\n    volumes:\n       - /var/run/:/host/var/run/\n       - ./crypto-config/peerOrganizations/org%d.example.com/peers/peer%d.org%d.example.com/msp:/etc/hyperledger/fabric/msp\n       - ./crypto-config/peerOrganizations/org%d.example.com/peers/peer%d.org%d.example.com/tls:/etc/hyperledger/fabric/tls\n    networks:\n      fabric:\n        aliases:\n          - net\n    ports:\n      - %d:7051\n      - %d:7052\n      - %d:7053\n    extra_hosts:\n'%(z,i,z,i,z,i,z,i,z,i,port,z,i,port+1,z,i,port,i,i,z,i,i,z,i,port,port+1,port+2))
+            portcount+=1
+            count = 0
+            for ii in range(0,Orderer):
+                f.write('      - "orderer%d.example.com:%s"\n'%(ii,ip[count]))
+                count+=1
+        f.close()
 
-def docker_compose_base(Peer):
-    f = open('../../customize/depolyment/docker-compose-base.yml','a')
+def hosts(Org,Peer,Zookeeper,Kafka,Orderer,ip):
+    f = open('../../kafkapeer/hosts','a')
     count = 0
-    for j in range(Peer):
-        port = 7051 + (100*count)
-        f.write("    peer%d:\n        image: hyperledger/fabric-peer\n        environment:\n            - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock\n            - CORE_PEER_NETWORKID=net\n            - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_fabric\n            - CORE_PEER_ADDRESSAUTODETECT=true\n            - CORE_PEER_GOSSIP_ORGLEADER=false\n            - CORE_PEER_GOSSIP_USELEADERELECTION=true\n            - CORE_PEER_PROFILE_ENABLED=true\n            - CORE_PEER_MSPCONFIGPATH=/var/hyperledger/msp\n            - CORE_LOGGING_LEVEL=INFO\n            - CORE_LOGGING_GOSSIP=WARNING\n            - CORE_LOGGING_MSP=DEBUG\n            - CORE_PEER_TLS_ENABLED=false\n            - CORE_PEER_TLS_CLIENTAUTHREQUIRED=false\n            - CORE_PEER_TLS_CERT_FILE=/var/hyperledger/tls/server.crt\n            - CORE_PEER_TLS_KEY_FILE=/var/hyperledger/tls/server.key\n            - CORE_PEER_TLS_ROOTCERT_FILE=/var/hyperledger/tls/ca.crt\n        volumes:\n            - /var/run/:/host/var/run/\n            - $GOPATH/src/github.com/hyperledger/fabric/:/opt/gopath/src/github.com/hyperledger/fabric/\n            - ../crypto-config/:/var/hyperledger/configs\n            - ../channel-artifacts/:/var/hyperledger/configs\n        command: peer node start\n        ports:\n            - '%d'\n            - '%d'\n\n"%(count,port,port+2))
+    for i in range(0,Zookeeper):
+        f.write('%s zookeeper%d\n'%(ip[count],i))
         count+=1
-    f.close()
-
-def docker_compose_org(Numoforg,Org,Peer,ip):
-    f = open('../../customize/depolyment/docker-compose-org%d.yml'%Numoforg,'a')
     count = 0
-    f.write("version: '2'\n\nnetworks:\n    fabric:\n\nservices:\n\n    cli:\n        container_name: cli\n        image: hyperledger/fabric-tools\n        tty: true\n        environment:\n          - GOPATH=/opt/gopath\n          - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock\n          - CORE_LOGGING_LEVEL=INFO\n          - CORE_PEER_ID=cli\n          - CORE_PEER_ADDRESS=peer0.org%d.example.com:7051\n          - CORE_PEER_LOCALMSPID=Org%dMSP\n          - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org%d.example.com/users/Admin@org%d.example.com/msp\n          - CORE_CHAINCODE_KEEPALIVE=10\n        extra_hosts:\n          - \"orderer.example.com:%s\"\n        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer\n        command: /bin/bash\n        volumes:\n            - /var/run/:/host/var/run/\n            - ../../chaincode/:/opt/gopath/src/github.com/chaincode\n            - $GOPATH/src/github.com/hyperledger/fabric/:/opt/gopath/src/github.com/hyperledger/fabric/\n            - ../crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/\n            - ../channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts/\n        depends_on:\n"%(Numoforg,Numoforg,Numoforg,Numoforg,ip[0]))
-    for j in range(Peer):
-        f.write("          - peer%d.org%d.example.com\n"%(j,Numoforg))
-    f.write("        networks:\n            - fabric\n\n")
-    for j in range(Peer):
-        ipcount = 1
-        port = 7051 + (100*count)
-        if j == 0:
-            if Numoforg == Org:
-                f.write("    peer%d.org%d.example.com:\n        extends:\n            file: docker-compose-base.yml\n            service: peer%d\n        container_name: peer%d.org%d.example.com\n        environment:\n            - CORE_PEER_CHAINCODELISTENADDRESS=peer%d.org%d.example.com:7052\n            - CORE_PEER_ID=peer%d.org%d.example.com\n            - CORE_PEER_ADDRESS=peer%d.org%d.example.com:7051\n            - CORE_PEER_GOSSIP_BOOTSTRAP=peer%d.org%d.example.com:7051\n            - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer%d.org%d.example.com:7051\n            - CORE_PEER_GOSSIP_ORGLEADER=false\n            - CORE_PEER_GOSSIP_USELEADERELECTION=true\n            - CORE_PEER_LOCALMSPID=Org%dMSP\n            - CORE_PEER_TLS_CLIENTROOTCAS_FILES=/var/hyperledger/users/Admin@org%d.example.com/tls/ca.crt\n            - CORE_PEER_TLS_CLIENTCERT_FILE=/var/hyperledger/users/Admin@org%d.example.com/tls/client.crt\n            - CORE_PEER_TLS_CLIENTKEY_FILE=/var/hyperledger/users/Admin@org%d.example.com/tls/client.key\n        volumes:\n            - ../crypto-config/peerOrganizations/org%d.example.com/peers/peer%d.org%d.example.com/msp:/var/hyperledger/msp\n            - ../crypto-config/peerOrganizations/org%d.example.com/peers/peer%d.org%d.example.com/tls:/var/hyperledger/tls\n            - ../crypto-config/peerOrganizations/org%d.example.com/users:/var/hyperledger/users\n            - ../channel-artifacts/:/var/hyperledger/configs\n        extra_hosts:\n            - \"orderer.example.com:%s\"\n"%(j,Numoforg,j,j,Numoforg,j,Numoforg,j,Numoforg,j,Numoforg,0,0,j,Numoforg,Numoforg,Numoforg,Numoforg,Numoforg,Numoforg,j,Numoforg,Numoforg,j,Numoforg,Numoforg,ip[0]))
-            else:
-                f.write("    peer%d.org%d.example.com:\n        extends:\n            file: docker-compose-base.yml\n            service: peer%d\n        container_name: peer%d.org%d.example.com\n        environment:\n            - CORE_PEER_CHAINCODELISTENADDRESS=peer%d.org%d.example.com:7052\n            - CORE_PEER_ID=peer%d.org%d.example.com\n            - CORE_PEER_ADDRESS=peer%d.org%d.example.com:7051\n            - CORE_PEER_GOSSIP_BOOTSTRAP=peer%d.org%d.example.com:7051\n            - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer%d.org%d.example.com:7051\n            - CORE_PEER_GOSSIP_ORGLEADER=false\n            - CORE_PEER_GOSSIP_USELEADERELECTION=true\n            - CORE_PEER_LOCALMSPID=Org%dMSP\n            - CORE_PEER_TLS_CLIENTROOTCAS_FILES=/var/hyperledger/users/Admin@org%d.example.com/tls/ca.crt\n            - CORE_PEER_TLS_CLIENTCERT_FILE=/var/hyperledger/users/Admin@org%d.example.com/tls/client.crt\n            - CORE_PEER_TLS_CLIENTKEY_FILE=/var/hyperledger/users/Admin@org%d.example.com/tls/client.key\n        volumes:\n            - ../crypto-config/peerOrganizations/org%d.example.com/peers/peer%d.org%d.example.com/msp:/var/hyperledger/msp\n            - ../crypto-config/peerOrganizations/org%d.example.com/peers/peer%d.org%d.example.com/tls:/var/hyperledger/tls\n            - ../crypto-config/peerOrganizations/org%d.example.com/users:/var/hyperledger/users\n            - ../channel-artifacts/:/var/hyperledger/configs\n        extra_hosts:\n            - \"orderer.example.com:%s\"\n"%(j,Numoforg,j,j,Numoforg,j,Numoforg,j,Numoforg,j,Numoforg,0,Numoforg+1,j,Numoforg,Numoforg,Numoforg,Numoforg,Numoforg,Numoforg,j,Numoforg,Numoforg,j,Numoforg,Numoforg,ip[0]))
-        else:
-            f.write("    peer%d.org%d.example.com:\n        extends:\n            file: docker-compose-base.yml\n            service: peer%d\n        container_name: peer%d.org%d.example.com\n        environment:\n            - CORE_PEER_CHAINCODELISTENADDRESS=peer%d.org%d.example.com:7052\n            - CORE_PEER_ID=peer%d.org%d.example.com\n            - CORE_PEER_ADDRESS=peer%d.org%d.example.com:7051\n            - CORE_PEER_GOSSIP_BOOTSTRAP=peer%d.org%d.example.com:7051\n            - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer%d.org%d.example.com:7051\n            - CORE_PEER_GOSSIP_ORGLEADER=false\n            - CORE_PEER_GOSSIP_USELEADERELECTION=true\n            - CORE_PEER_LOCALMSPID=Org%dMSP\n            - CORE_PEER_TLS_CLIENTROOTCAS_FILES=/var/hyperledger/users/Admin@org%d.example.com/tls/ca.crt\n            - CORE_PEER_TLS_CLIENTCERT_FILE=/var/hyperledger/users/Admin@org%d.example.com/tls/client.crt\n            - CORE_PEER_TLS_CLIENTKEY_FILE=/var/hyperledger/users/Admin@org%d.example.com/tls/client.key\n        volumes:\n            - ../crypto-config/peerOrganizations/org%d.example.com/peers/peer%d.org%d.example.com/msp:/var/hyperledger/msp\n            - ../crypto-config/peerOrganizations/org%d.example.com/peers/peer%d.org%d.example.com/tls:/var/hyperledger/tls\n            - ../crypto-config/peerOrganizations/org%d.example.com/users:/var/hyperledger/users\n            - ../channel-artifacts/:/var/hyperledger/configs\n        extra_hosts:\n            - \"orderer.example.com:%s\"\n"%(j,Numoforg,j,j,Numoforg,j,Numoforg,j,Numoforg,j,Numoforg,j-1,Numoforg,j,Numoforg,Numoforg,Numoforg,Numoforg,Numoforg,Numoforg,j,Numoforg,Numoforg,j,Numoforg,Numoforg,ip[0]))
-        for ii in range(1,Org+1):
-            for jj in range(Peer):
-                if jj == j and ii == Numoforg:
-                    pass
-                else:
-                    f.write("            - \"peer%d.org%d.example.com:%s\"\n"%(jj,ii,ip[ipcount]))
-            ipcount+=1
-        f.write("        networks:\n          fabric:\n            aliases:\n              - net\n        ports:\n          - %d:7051\n          - %d:7053\n\n"%(port,port+2))
+    for j in range(0,Kafka):
+        f.write('%s kafka%d\n'%(ip[count],j))
+        count+=1
+    count = 0
+    for ii in range(0,Orderer):
+        f.write('%s orderer%d.example.com\n'%(ip[count],ii))
+        count+=1
+    count = 4
+    for jj in range(1,Org+1):
+        for zz in range(0,Peer):
+            f.write('%s peer%d.org%d.example.com\n'%(ip[count],zz,jj))
         count+=1
     f.close()
-
 
 #if __name__ == '__main__':
 def config(Org,Peer):
 
-    # Org = 3
-    # Peer = 20
+    Zookeeper = 3
+    Kafka = 4
+    Orderer = 3
+
     ip = [l for l in open('./ips', 'r').read().split('\n') if l]
-    
 
-    # 1. docker_compose_orderer.yml
-    docker_compose_orderer(Org,Peer,ip)
+    # 1. docker_compose_orderer.yaml
+    docker_compose_zookeeperX(Zookeeper,Kafka,ip)
 
-    # 2. docker-compose-base.yml
-    docker_compose_base(Peer)
+    # 2. docker-compose-base.yaml
+    docker_compose_kafkaX(Zookeeper,Kafka,ip)
 
-    # 3. docker-compose-orgX.yml
-    for Numoforg in range(1,Org+1):
-        docker_compose_org(Numoforg,Org,Peer,ip)
+    # 3. docker-compose-ordererX.yaml
+    docker_compose_ordererX(Orderer,Kafka,ip)
+
+    # 4. docker_compose_peer_orgX.yaml
+    docker_compose_peer_orgX(Org,Peer,Orderer,ip)
+
+    # 5. hosts
+    hosts(Org,Peer,Zookeeper,Kafka,Orderer,ip)

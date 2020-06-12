@@ -1,47 +1,107 @@
-[34m2019-05-10 21:35:25.848 UTC [kvledger] CommitWithPvtData -> INFO 95dd[0m [channelall] Committed block [0] with 1 transaction(s) in 12ms (state_validation=0ms block_commit=8ms state_commit=2ms)
-MIICRDCCAeqgAwIBAgIRAOL42qrH9H5XpVToCNVGuVkwCgYIKoZIzj0EAwIwczEL
-[34m2019-05-10 21:36:59.980 UTC [kvledger] CommitWithPvtData -> INFO b461[0m [channelall] Committed block [1] with 1 transaction(s) in 15ms (state_validation=0ms block_commit=9ms state_commit=2ms)
-[34m2019-05-10 21:37:18.711 UTC [kvledger] CommitWithPvtData -> INFO bae9[0m [channelall] Committed block [2] with 1 transaction(s) in 21ms (state_validation=0ms block_commit=14ms state_commit=3ms)
-[34m2019-05-10 21:37:25.443 UTC [kvledger] CommitWithPvtData -> INFO bd2d[0m [channelall] Committed block [3] with 1 transaction(s) in 395ms (state_validation=0ms block_commit=361ms state_commit=27ms)
-[34m2019-05-10 21:37:32.517 UTC [kvledger] CommitWithPvtData -> INFO bf32[0m [channelall] Committed block [4] with 1 transaction(s) in 26ms (state_validation=0ms block_commit=18ms state_commit=3ms)
-[34m2019-05-10 21:37:38.859 UTC [kvledger] CommitWithPvtData -> INFO c26c[0m [channelall] Committed block [5] with 2 transaction(s) in 6341ms (state_validation=0ms block_commit=21ms state_commit=6315ms)
-[34m2019-05-10 21:37:38.877 UTC [kvledger] CommitWithPvtData -> INFO c283[0m [channelall] Committed block [6] with 2 transaction(s) in 15ms (state_validation=0ms block_commit=7ms state_commit=6ms)
-[34m2019-05-10 21:37:38.890 UTC [kvledger] CommitWithPvtData -> INFO c2a8[0m [channelall] Committed block [7] with 3 transaction(s) in 11ms (state_validation=0ms block_commit=8ms state_commit=1ms)
-[34m2019-05-10 21:37:40.907 UTC [kvledger] CommitWithPvtData -> INFO c37b[0m [channelall] Committed block [8] with 3 transaction(s) in 39ms (state_validation=0ms block_commit=31ms state_commit=3ms)
-[34m2019-05-10 21:37:46.896 UTC [kvledger] CommitWithPvtData -> INFO c5ed[0m [channelall] Committed block [9] with 4 transaction(s) in 24ms (state_validation=0ms block_commit=18ms state_commit=2ms)
-[34m2019-05-10 21:37:46.915 UTC [kvledger] CommitWithPvtData -> INFO c615[0m [channelall] Committed block [10] with 4 transaction(s) in 15ms (state_validation=0ms block_commit=9ms state_commit=2ms)
-[34m2019-05-10 21:37:49.087 UTC [kvledger] CommitWithPvtData -> INFO c72c[0m [channelall] Committed block [11] with 5 transaction(s) in 46ms (state_validation=0ms block_commit=26ms state_commit=10ms)
-[34m2019-05-10 21:37:52.348 UTC [kvledger] CommitWithPvtData -> INFO c864[0m [channelall] Committed block [12] with 4 transaction(s) in 277ms (state_validation=0ms block_commit=272ms state_commit=2ms)
-[34m2019-05-10 21:37:54.539 UTC [kvledger] CommitWithPvtData -> INFO c9db[0m [channelall] Committed block [13] with 4 transaction(s) in 33ms (state_validation=0ms block_commit=24ms state_commit=5ms)
-[34m2019-05-10 21:37:56.562 UTC [kvledger] CommitWithPvtData -> INFO ca55[0m [channelall] Committed block [14] with 3 transaction(s) in 19ms (state_validation=0ms block_commit=13ms state_commit=2ms)
-[34m2019-05-10 21:37:59.035 UTC [kvledger] CommitWithPvtData -> INFO cbb7[0m [channelall] Committed block [15] with 3 transaction(s) in 21ms (state_validation=0ms block_commit=15ms state_commit=3ms)
-[34m2019-05-10 21:38:01.063 UTC [kvledger] CommitWithPvtData -> INFO cc81[0m [channelall] Committed block [16] with 5 transaction(s) in 28ms (state_validation=0ms block_commit=21ms state_commit=3ms)
-[34m2019-05-10 21:38:04.388 UTC [kvledger] CommitWithPvtData -> INFO cdc7[0m [channelall] Committed block [17] with 3 transaction(s) in 905ms (state_validation=0ms block_commit=896ms state_commit=3ms)
-[34m2019-05-10 21:38:06.674 UTC [kvledger] CommitWithPvtData -> INFO cf25[0m [channelall] Committed block [18] with 5 transaction(s) in 34ms (state_validation=0ms block_commit=16ms state_commit=9ms)
-[34m2019-05-10 21:38:10.891 UTC [kvledger] CommitWithPvtData -> INFO d0e6[0m [channelall] Committed block [19] with 4 transaction(s) in 19ms (state_validation=0ms block_commit=14ms state_commit=2ms)
-[34m2019-05-10 21:38:11.790 UTC [kvledger] CommitWithPvtData -> INFO d11d[0m [channelall] Committed block [20] with 2 transaction(s) in 28ms (state_validation=0ms block_commit=21ms state_commit=3ms)
-[34m2019-05-10 21:38:13.879 UTC [kvledger] CommitWithPvtData -> INFO d27d[0m [channelall] Committed block [21] with 5 transaction(s) in 41ms (state_validation=0ms block_commit=31ms state_commit=4ms)
-[34m2019-05-10 21:38:15.910 UTC [kvledger] CommitWithPvtData -> INFO d30f[0m [channelall] Committed block [22] with 3 transaction(s) in 28ms (state_validation=0ms block_commit=21ms state_commit=3ms)
-[34m2019-05-10 21:38:18.476 UTC [kvledger] CommitWithPvtData -> INFO d477[0m [channelall] Committed block [23] with 3 transaction(s) in 24ms (state_validation=0ms block_commit=18ms state_commit=3ms)
-[34m2019-05-10 21:38:20.914 UTC [kvledger] CommitWithPvtData -> INFO d565[0m [channelall] Committed block [24] with 5 transaction(s) in 37ms (state_validation=0ms block_commit=30ms state_commit=3ms)
-[34m2019-05-10 21:38:23.423 UTC [kvledger] CommitWithPvtData -> INFO d656[0m [channelall] Committed block [25] with 2 transaction(s) in 23ms (state_validation=0ms block_commit=16ms state_commit=3ms)
-[34m2019-05-10 21:38:26.227 UTC [kvledger] CommitWithPvtData -> INFO d7d2[0m [channelall] Committed block [26] with 3 transaction(s) in 492ms (state_validation=0ms block_commit=479ms state_commit=7ms)
-[34m2019-05-10 21:38:27.804 UTC [kvledger] CommitWithPvtData -> INFO d860[0m [channelall] Committed block [27] with 5 transaction(s) in 27ms (state_validation=0ms block_commit=20ms state_commit=3ms)
-[34m2019-05-10 21:38:31.188 UTC [kvledger] CommitWithPvtData -> INFO d9e0[0m [channelall] Committed block [28] with 1 transaction(s) in 32ms (state_validation=0ms block_commit=19ms state_commit=6ms)
-[34m2019-05-10 21:38:33.655 UTC [kvledger] CommitWithPvtData -> INFO db2d[0m [channelall] Committed block [29] with 4 transaction(s) in 19ms (state_validation=0ms block_commit=13ms state_commit=3ms)
-[34m2019-05-10 21:38:35.781 UTC [kvledger] CommitWithPvtData -> INFO dc29[0m [channelall] Committed block [30] with 3 transaction(s) in 30ms (state_validation=0ms block_commit=24ms state_commit=3ms)
-[34m2019-05-10 21:38:40.031 UTC [kvledger] CommitWithPvtData -> INFO ddd5[0m [channelall] Committed block [31] with 3 transaction(s) in 21ms (state_validation=0ms block_commit=15ms state_commit=3ms)
-[34m2019-05-10 21:38:42.522 UTC [kvledger] CommitWithPvtData -> INFO def2[0m [channelall] Committed block [32] with 2 transaction(s) in 21ms (state_validation=0ms block_commit=13ms state_commit=4ms)
-[34m2019-05-10 21:38:46.421 UTC [kvledger] CommitWithPvtData -> INFO e046[0m [channelall] Committed block [33] with 1 transaction(s) in 20ms (state_validation=0ms block_commit=14ms state_commit=3ms)
-[34m2019-05-10 21:38:49.686 UTC [kvledger] CommitWithPvtData -> INFO e1a0[0m [channelall] Committed block [34] with 1 transaction(s) in 785ms (state_validation=0ms block_commit=778ms state_commit=3ms)
-[34m2019-05-10 21:39:14.222 UTC [kvledger] CommitWithPvtData -> INFO eab1[0m [channelall] Committed block [35] with 47 transaction(s) in 27ms (state_validation=2ms block_commit=14ms state_commit=4ms)
-[34m2019-05-10 21:39:16.489 UTC [kvledger] CommitWithPvtData -> INFO f4f7[0m [channelall] Committed block [36] with 500 transaction(s) in 102ms (state_validation=22ms block_commit=53ms state_commit=13ms)
-[34m2019-05-10 21:39:17.243 UTC [kvledger] CommitWithPvtData -> INFO ff7c[0m [channelall] Committed block [37] with 500 transaction(s) in 76ms (state_validation=10ms block_commit=46ms state_commit=6ms)
-[34m2019-05-10 21:39:17.939 UTC [kvledger] CommitWithPvtData -> INFO 10a21[0m [channelall] Committed block [38] with 500 transaction(s) in 151ms (state_validation=10ms block_commit=99ms state_commit=19ms)
-[34m2019-05-10 21:39:18.881 UTC [kvledger] CommitWithPvtData -> INFO 11531[0m [channelall] Committed block [39] with 500 transaction(s) in 143ms (state_validation=58ms block_commit=55ms state_commit=11ms)
-[34m2019-05-10 21:39:23.065 UTC [kvledger] CommitWithPvtData -> INFO 1209f[0m [channelall] Committed block [40] with 500 transaction(s) in 59ms (state_validation=5ms block_commit=40ms state_commit=4ms)
-[34m2019-05-10 21:39:23.196 UTC [kvledger] CommitWithPvtData -> INFO 12a90[0m [channelall] Committed block [41] with 500 transaction(s) in 53ms (state_validation=5ms block_commit=29ms state_commit=4ms)
-[34m2019-05-10 21:39:23.317 UTC [kvledger] CommitWithPvtData -> INFO 13463[0m [channelall] Committed block [42] with 500 transaction(s) in 46ms (state_validation=6ms block_commit=28ms state_commit=3ms)
-[34m2019-05-10 21:39:23.438 UTC [kvledger] CommitWithPvtData -> INFO 13e34[0m [channelall] Committed block [43] with 500 transaction(s) in 46ms (state_validation=5ms block_commit=28ms state_commit=3ms)
-[34m2019-05-10 21:39:23.539 UTC [kvledger] CommitWithPvtData -> INFO 1481b[0m [channelall] Committed block [44] with 500 transaction(s) in 41ms (state_validation=5ms block_commit=24ms state_commit=3ms)
-[34m2019-05-10 21:39:25.062 UTC [kvledger] CommitWithPvtData -> INFO 1518b[0m [channelall] Committed block [45] with 453 transaction(s) in 71ms (state_validation=5ms block_commit=52ms state_commit=5ms)
+[34m2019-05-20 14:06:23.435 UTC [kvledger] CommitWithPvtData -> INFO 094[0m [mychannel] Committed block [0] with 1 transaction(s) in 17ms (state_validation=1ms block_commit=10ms state_commit=3ms)
+[34m2019-05-20 14:10:18.451 UTC [gossip.privdata] StoreBlock -> INFO 0d0[0m [mychannel] Received block [1] from buffer
+[34m2019-05-20 14:10:18.470 UTC [kvledger] CommitWithPvtData -> INFO 0d3[0m [mychannel] Committed block [1] with 1 transaction(s) in 16ms (state_validation=0ms block_commit=12ms state_commit=2ms)
+[34m2019-05-20 14:10:28.235 UTC [gossip.privdata] StoreBlock -> INFO 0d4[0m [mychannel] Received block [2] from buffer
+[34m2019-05-20 14:10:28.266 UTC [kvledger] CommitWithPvtData -> INFO 0d6[0m [mychannel] Committed block [2] with 1 transaction(s) in 30ms (state_validation=0ms block_commit=21ms state_commit=4ms)
+[34m2019-05-20 14:10:34.727 UTC [gossip.privdata] StoreBlock -> INFO 0db[0m [mychannel] Received block [3] from buffer
+[34m2019-05-20 14:10:34.754 UTC [kvledger] CommitWithPvtData -> INFO 0dd[0m [mychannel] Committed block [3] with 1 transaction(s) in 25ms (state_validation=0ms block_commit=17ms state_commit=3ms)
+[34m2019-05-20 14:10:41.292 UTC [gossip.privdata] StoreBlock -> INFO 0de[0m [mychannel] Received block [4] from buffer
+[34m2019-05-20 14:10:41.325 UTC [kvledger] CommitWithPvtData -> INFO 0e0[0m [mychannel] Committed block [4] with 2 transaction(s) in 32ms (state_validation=0ms block_commit=20ms state_commit=5ms)
+[34m2019-05-20 14:10:45.916 UTC [gossip.privdata] StoreBlock -> INFO 0e1[0m [mychannel] Received block [5] from buffer
+[34m2019-05-20 14:10:45.946 UTC [kvledger] CommitWithPvtData -> INFO 0e3[0m [mychannel] Committed block [5] with 2 transaction(s) in 29ms (state_validation=0ms block_commit=20ms state_commit=3ms)
+[34m2019-05-20 14:10:48.773 UTC [gossip.privdata] StoreBlock -> INFO 0e9[0m [mychannel] Received block [6] from buffer
+[34m2019-05-20 14:10:54.722 UTC [kvledger] CommitWithPvtData -> INFO 0ed[0m [mychannel] Committed block [6] with 2 transaction(s) in 5946ms (state_validation=0ms block_commit=22ms state_commit=5922ms)
+[34m2019-05-20 14:10:54.724 UTC [gossip.privdata] StoreBlock -> INFO 0ee[0m [mychannel] Received block [7] from buffer
+[34m2019-05-20 14:10:54.738 UTC [kvledger] CommitWithPvtData -> INFO 0f0[0m [mychannel] Committed block [7] with 2 transaction(s) in 12ms (state_validation=0ms block_commit=8ms state_commit=2ms)
+[34m2019-05-20 14:10:55.954 UTC [gossip.privdata] StoreBlock -> INFO 0f1[0m [mychannel] Received block [8] from buffer
+[34m2019-05-20 14:10:56.002 UTC [kvledger] CommitWithPvtData -> INFO 0f3[0m [mychannel] Committed block [8] with 3 transaction(s) in 42ms (state_validation=0ms block_commit=26ms state_commit=3ms)
+[34m2019-05-20 14:10:57.961 UTC [gossip.privdata] StoreBlock -> INFO 0f4[0m [mychannel] Received block [9] from buffer
+[34m2019-05-20 14:10:58.000 UTC [kvledger] CommitWithPvtData -> INFO 0f6[0m [mychannel] Committed block [9] with 2 transaction(s) in 37ms (state_validation=0ms block_commit=30ms state_commit=3ms)
+[34m2019-05-20 14:11:00.807 UTC [gossip.privdata] StoreBlock -> INFO 0f9[0m [mychannel] Received block [10] from buffer
+[34m2019-05-20 14:11:00.834 UTC [kvledger] CommitWithPvtData -> INFO 0fb[0m [mychannel] Committed block [10] with 3 transaction(s) in 24ms (state_validation=0ms block_commit=17ms state_commit=3ms)
+[34m2019-05-20 14:11:03.313 UTC [gossip.privdata] StoreBlock -> INFO 0fe[0m [mychannel] Received block [11] from buffer
+[34m2019-05-20 14:11:03.367 UTC [kvledger] CommitWithPvtData -> INFO 100[0m [mychannel] Committed block [11] with 4 transaction(s) in 51ms (state_validation=0ms block_commit=42ms state_commit=3ms)
+[34m2019-05-20 14:11:05.361 UTC [gossip.privdata] StoreBlock -> INFO 101[0m [mychannel] Received block [12] from buffer
+[34m2019-05-20 14:11:05.394 UTC [kvledger] CommitWithPvtData -> INFO 103[0m [mychannel] Committed block [12] with 2 transaction(s) in 30ms (state_validation=0ms block_commit=23ms state_commit=4ms)
+[34m2019-05-20 14:11:07.726 UTC [gossip.privdata] StoreBlock -> INFO 104[0m [mychannel] Received block [13] from buffer
+[34m2019-05-20 14:11:07.755 UTC [kvledger] CommitWithPvtData -> INFO 106[0m [mychannel] Committed block [13] with 2 transaction(s) in 26ms (state_validation=0ms block_commit=19ms state_commit=3ms)
+[34m2019-05-20 14:11:09.856 UTC [gossip.privdata] StoreBlock -> INFO 107[0m [mychannel] Received block [14] from buffer
+[34m2019-05-20 14:11:09.914 UTC [kvledger] CommitWithPvtData -> INFO 109[0m [mychannel] Committed block [14] with 6 transaction(s) in 55ms (state_validation=0ms block_commit=46ms state_commit=4ms)
+[34m2019-05-20 14:11:13.738 UTC [gossip.privdata] StoreBlock -> INFO 10a[0m [mychannel] Received block [15] from buffer
+[34m2019-05-20 14:11:13.766 UTC [kvledger] CommitWithPvtData -> INFO 10c[0m [mychannel] Committed block [15] with 4 transaction(s) in 25ms (state_validation=0ms block_commit=18ms state_commit=2ms)
+[34m2019-05-20 14:11:16.301 UTC [gossip.privdata] StoreBlock -> INFO 10d[0m [mychannel] Received block [16] from buffer
+[34m2019-05-20 14:11:16.369 UTC [kvledger] CommitWithPvtData -> INFO 10f[0m [mychannel] Committed block [16] with 5 transaction(s) in 62ms (state_validation=0ms block_commit=54ms state_commit=4ms)
+[34m2019-05-20 14:11:18.317 UTC [gossip.privdata] StoreBlock -> INFO 110[0m [mychannel] Received block [17] from buffer
+[34m2019-05-20 14:11:18.353 UTC [kvledger] CommitWithPvtData -> INFO 112[0m [mychannel] Committed block [17] with 2 transaction(s) in 33ms (state_validation=0ms block_commit=27ms state_commit=3ms)
+[34m2019-05-20 14:11:20.859 UTC [gossip.privdata] StoreBlock -> INFO 113[0m [mychannel] Received block [18] from buffer
+[34m2019-05-20 14:11:20.892 UTC [kvledger] CommitWithPvtData -> INFO 115[0m [mychannel] Committed block [18] with 4 transaction(s) in 30ms (state_validation=0ms block_commit=22ms state_commit=3ms)
+[34m2019-05-20 14:11:23.007 UTC [gossip.privdata] StoreBlock -> INFO 116[0m [mychannel] Received block [19] from buffer
+[34m2019-05-20 14:11:23.069 UTC [kvledger] CommitWithPvtData -> INFO 118[0m [mychannel] Committed block [19] with 5 transaction(s) in 55ms (state_validation=0ms block_commit=44ms state_commit=5ms)
+[34m2019-05-20 14:11:26.964 UTC [gossip.privdata] StoreBlock -> INFO 119[0m [mychannel] Received block [20] from buffer
+[34m2019-05-20 14:11:26.991 UTC [kvledger] CommitWithPvtData -> INFO 11b[0m [mychannel] Committed block [20] with 4 transaction(s) in 24ms (state_validation=0ms block_commit=18ms state_commit=3ms)
+[34m2019-05-20 14:11:29.428 UTC [gossip.privdata] StoreBlock -> INFO 11e[0m [mychannel] Received block [21] from buffer
+[34m2019-05-20 14:11:29.490 UTC [kvledger] CommitWithPvtData -> INFO 120[0m [mychannel] Committed block [21] with 5 transaction(s) in 53ms (state_validation=0ms block_commit=43ms state_commit=5ms)
+[34m2019-05-20 14:11:31.448 UTC [gossip.privdata] StoreBlock -> INFO 123[0m [mychannel] Received block [22] from buffer
+[34m2019-05-20 14:11:31.483 UTC [kvledger] CommitWithPvtData -> INFO 125[0m [mychannel] Committed block [22] with 1 transaction(s) in 33ms (state_validation=0ms block_commit=26ms state_commit=3ms)
+[34m2019-05-20 14:11:33.825 UTC [gossip.privdata] StoreBlock -> INFO 126[0m [mychannel] Received block [23] from buffer
+[34m2019-05-20 14:11:33.858 UTC [kvledger] CommitWithPvtData -> INFO 128[0m [mychannel] Committed block [23] with 3 transaction(s) in 29ms (state_validation=0ms block_commit=19ms state_commit=4ms)
+[34m2019-05-20 14:11:36.018 UTC [gossip.privdata] StoreBlock -> INFO 129[0m [mychannel] Received block [24] from buffer
+[34m2019-05-20 14:11:36.077 UTC [kvledger] CommitWithPvtData -> INFO 12b[0m [mychannel] Committed block [24] with 6 transaction(s) in 47ms (state_validation=0ms block_commit=36ms state_commit=5ms)
+[34m2019-05-20 14:11:40.714 UTC [gossip.privdata] StoreBlock -> INFO 12c[0m [mychannel] Received block [25] from buffer
+[34m2019-05-20 14:11:40.746 UTC [kvledger] CommitWithPvtData -> INFO 12e[0m [mychannel] Committed block [25] with 3 transaction(s) in 28ms (state_validation=0ms block_commit=21ms state_commit=3ms)
+[34m2019-05-20 14:11:42.985 UTC [gossip.privdata] StoreBlock -> INFO 12f[0m [mychannel] Received block [26] from buffer
+[34m2019-05-20 14:11:43.038 UTC [kvledger] CommitWithPvtData -> INFO 131[0m [mychannel] Committed block [26] with 6 transaction(s) in 46ms (state_validation=0ms block_commit=38ms state_commit=3ms)
+[34m2019-05-20 14:11:47.263 UTC [gossip.privdata] StoreBlock -> INFO 132[0m [mychannel] Received block [27] from buffer
+[34m2019-05-20 14:11:47.291 UTC [kvledger] CommitWithPvtData -> INFO 134[0m [mychannel] Committed block [27] with 1 transaction(s) in 26ms (state_validation=0ms block_commit=18ms state_commit=3ms)
+[34m2019-05-20 14:11:49.278 UTC [gossip.privdata] StoreBlock -> INFO 135[0m [mychannel] Received block [28] from buffer
+[34m2019-05-20 14:11:49.315 UTC [kvledger] CommitWithPvtData -> INFO 137[0m [mychannel] Committed block [28] with 6 transaction(s) in 32ms (state_validation=0ms block_commit=24ms state_commit=4ms)
+[34m2019-05-20 14:11:53.701 UTC [gossip.privdata] StoreBlock -> INFO 138[0m [mychannel] Received block [29] from buffer
+[34m2019-05-20 14:11:53.729 UTC [kvledger] CommitWithPvtData -> INFO 13a[0m [mychannel] Committed block [29] with 1 transaction(s) in 26ms (state_validation=0ms block_commit=18ms state_commit=3ms)
+[34m2019-05-20 14:11:55.803 UTC [gossip.privdata] StoreBlock -> INFO 13c[0m [mychannel] Received block [30] from buffer
+[34m2019-05-20 14:11:55.835 UTC [kvledger] CommitWithPvtData -> INFO 13e[0m [mychannel] Committed block [30] with 5 transaction(s) in 29ms (state_validation=0ms block_commit=20ms state_commit=3ms)
+[34m2019-05-20 14:12:00.190 UTC [gossip.privdata] StoreBlock -> INFO 142[0m [mychannel] Received block [31] from buffer
+[34m2019-05-20 14:12:00.219 UTC [kvledger] CommitWithPvtData -> INFO 144[0m [mychannel] Committed block [31] with 1 transaction(s) in 28ms (state_validation=0ms block_commit=19ms state_commit=4ms)
+[34m2019-05-20 14:12:02.320 UTC [gossip.privdata] StoreBlock -> INFO 145[0m [mychannel] Received block [32] from buffer
+[34m2019-05-20 14:12:02.347 UTC [kvledger] CommitWithPvtData -> INFO 147[0m [mychannel] Committed block [32] with 3 transaction(s) in 25ms (state_validation=0ms block_commit=17ms state_commit=4ms)
+[34m2019-05-20 14:12:09.185 UTC [gossip.privdata] StoreBlock -> INFO 148[0m [mychannel] Received block [33] from buffer
+[34m2019-05-20 14:12:09.220 UTC [kvledger] CommitWithPvtData -> INFO 14a[0m [mychannel] Committed block [33] with 2 transaction(s) in 32ms (state_validation=0ms block_commit=23ms state_commit=4ms)
+[34m2019-05-20 14:12:17.388 UTC [gossip.privdata] StoreBlock -> INFO 14b[0m [mychannel] Received block [34] from buffer
+[34m2019-05-20 14:12:17.414 UTC [kvledger] CommitWithPvtData -> INFO 14d[0m [mychannel] Committed block [34] with 1 transaction(s) in 24ms (state_validation=0ms block_commit=16ms state_commit=3ms)
+[34m2019-05-20 14:13:55.572 UTC [gossip.privdata] StoreBlock -> INFO 15e[0m [mychannel] Received block [35] from buffer
+[34m2019-05-20 14:13:55.648 UTC [kvledger] CommitWithPvtData -> INFO 160[0m [mychannel] Committed block [35] with 104 transaction(s) in 43ms (state_validation=2ms block_commit=28ms state_commit=6ms)
+[34m2019-05-20 14:13:57.619 UTC [gossip.privdata] StoreBlock -> INFO 161[0m [mychannel] Received block [36] from buffer
+[34m2019-05-20 14:13:57.798 UTC [kvledger] CommitWithPvtData -> INFO 163[0m [mychannel] Committed block [36] with 260 transaction(s) in 55ms (state_validation=4ms block_commit=37ms state_commit=6ms)
+[34m2019-05-20 14:13:59.996 UTC [gossip.privdata] StoreBlock -> INFO 22a[0m [mychannel] Received block [37] from buffer
+[34m2019-05-20 14:14:00.083 UTC [kvledger] CommitWithPvtData -> INFO 232[0m [mychannel] Committed block [37] with 318 transaction(s) in 53ms (state_validation=9ms block_commit=33ms state_commit=3ms)
+[34m2019-05-20 14:14:01.635 UTC [gossip.privdata] StoreBlock -> INFO 293[0m [mychannel] Received block [38] from buffer
+[34m2019-05-20 14:14:01.840 UTC [kvledger] CommitWithPvtData -> INFO 295[0m [mychannel] Committed block [38] with 311 transaction(s) in 71ms (state_validation=5ms block_commit=49ms state_commit=4ms)
+[34m2019-05-20 14:14:03.642 UTC [gossip.privdata] StoreBlock -> INFO 296[0m [mychannel] Received block [39] from buffer
+[34m2019-05-20 14:14:03.848 UTC [kvledger] CommitWithPvtData -> INFO 298[0m [mychannel] Committed block [39] with 314 transaction(s) in 80ms (state_validation=16ms block_commit=52ms state_commit=5ms)
+[34m2019-05-20 14:14:05.628 UTC [gossip.privdata] StoreBlock -> INFO 299[0m [mychannel] Received block [40] from buffer
+[34m2019-05-20 14:14:05.838 UTC [kvledger] CommitWithPvtData -> INFO 29b[0m [mychannel] Committed block [40] with 313 transaction(s) in 75ms (state_validation=9ms block_commit=52ms state_commit=5ms)
+[34m2019-05-20 14:14:07.656 UTC [gossip.privdata] StoreBlock -> INFO 29c[0m [mychannel] Received block [41] from buffer
+[34m2019-05-20 14:14:07.859 UTC [kvledger] CommitWithPvtData -> INFO 29e[0m [mychannel] Committed block [41] with 315 transaction(s) in 82ms (state_validation=19ms block_commit=48ms state_commit=5ms)
+[34m2019-05-20 14:14:09.661 UTC [gossip.privdata] StoreBlock -> INFO 29f[0m [mychannel] Received block [42] from buffer
+[34m2019-05-20 14:14:09.856 UTC [kvledger] CommitWithPvtData -> INFO 2a1[0m [mychannel] Committed block [42] with 313 transaction(s) in 80ms (state_validation=15ms block_commit=50ms state_commit=6ms)
+[34m2019-05-20 14:14:11.671 UTC [gossip.privdata] StoreBlock -> INFO 2a2[0m [mychannel] Received block [43] from buffer
+[34m2019-05-20 14:14:11.870 UTC [kvledger] CommitWithPvtData -> INFO 2a4[0m [mychannel] Committed block [43] with 313 transaction(s) in 68ms (state_validation=5ms block_commit=49ms state_commit=5ms)
+[34m2019-05-20 14:14:13.670 UTC [gossip.privdata] StoreBlock -> INFO 2a5[0m [mychannel] Received block [44] from buffer
+[34m2019-05-20 14:14:13.882 UTC [kvledger] CommitWithPvtData -> INFO 2a7[0m [mychannel] Committed block [44] with 316 transaction(s) in 61ms (state_validation=9ms block_commit=40ms state_commit=4ms)
+[34m2019-05-20 14:14:15.662 UTC [gossip.privdata] StoreBlock -> INFO 2a9[0m [mychannel] Received block [45] from buffer
+[34m2019-05-20 14:14:15.884 UTC [kvledger] CommitWithPvtData -> INFO 2ab[0m [mychannel] Committed block [45] with 313 transaction(s) in 75ms (state_validation=17ms block_commit=47ms state_commit=4ms)
+[34m2019-05-20 14:14:17.693 UTC [gossip.privdata] StoreBlock -> INFO 2ad[0m [mychannel] Received block [46] from buffer
+[34m2019-05-20 14:14:17.890 UTC [kvledger] CommitWithPvtData -> INFO 2af[0m [mychannel] Committed block [46] with 316 transaction(s) in 64ms (state_validation=5ms block_commit=45ms state_commit=5ms)
+[34m2019-05-20 14:14:19.705 UTC [gossip.privdata] StoreBlock -> INFO 2b2[0m [mychannel] Received block [47] from buffer
+[34m2019-05-20 14:14:19.903 UTC [kvledger] CommitWithPvtData -> INFO 2b4[0m [mychannel] Committed block [47] with 315 transaction(s) in 62ms (state_validation=5ms block_commit=47ms state_commit=3ms)
+[34m2019-05-20 14:14:21.706 UTC [gossip.privdata] StoreBlock -> INFO 2b5[0m [mychannel] Received block [48] from buffer
+[34m2019-05-20 14:14:21.918 UTC [kvledger] CommitWithPvtData -> INFO 2b7[0m [mychannel] Committed block [48] with 316 transaction(s) in 77ms (state_validation=7ms block_commit=58ms state_commit=5ms)
+[34m2019-05-20 14:14:23.726 UTC [gossip.privdata] StoreBlock -> INFO 2b8[0m [mychannel] Received block [49] from buffer
+[34m2019-05-20 14:14:23.914 UTC [kvledger] CommitWithPvtData -> INFO 2ba[0m [mychannel] Committed block [49] with 315 transaction(s) in 55ms (state_validation=5ms block_commit=39ms state_commit=4ms)
+[34m2019-05-20 14:14:25.700 UTC [gossip.privdata] StoreBlock -> INFO 2bb[0m [mychannel] Received block [50] from buffer
+[34m2019-05-20 14:14:25.869 UTC [kvledger] CommitWithPvtData -> INFO 2bd[0m [mychannel] Committed block [50] with 224 transaction(s) in 55ms (state_validation=3ms block_commit=39ms state_commit=5ms)
+[34m2019-05-20 14:14:27.739 UTC [gossip.privdata] StoreBlock -> INFO 2be[0m [mychannel] Received block [51] from buffer
+[34m2019-05-20 14:14:27.877 UTC [kvledger] CommitWithPvtData -> INFO 2c0[0m [mychannel] Committed block [51] with 241 transaction(s) in 49ms (state_validation=4ms block_commit=33ms state_commit=4ms)
+[34m2019-05-20 14:14:29.948 UTC [gossip.privdata] StoreBlock -> INFO 2c1[0m [mychannel] Received block [52] from buffer
+[34m2019-05-20 14:14:29.979 UTC [kvledger] CommitWithPvtData -> INFO 2c3[0m [mychannel] Committed block [52] with 78 transaction(s) in 22ms (state_validation=2ms block_commit=15ms state_commit=2ms)
+[34m2019-05-20 14:14:31.767 UTC [gossip.privdata] StoreBlock -> INFO 2c4[0m [mychannel] Received block [53] from buffer
+[34m2019-05-20 14:14:31.803 UTC [kvledger] CommitWithPvtData -> INFO 2c6[0m [mychannel] Committed block [53] with 5 transaction(s) in 32ms (state_validation=0ms block_commit=19ms state_commit=5ms)

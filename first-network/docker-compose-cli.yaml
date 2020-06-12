@@ -5,6 +5,13 @@
 
 version: '2'
 
+volumes:
+  orderer.example.com:
+  peer0.org1.example.com:
+  peer1.org1.example.com:
+  peer0.org2.example.com:
+  peer1.org2.example.com:
+
 networks:
   byfn:
 
@@ -18,6 +25,38 @@ services:
     networks:
       - byfn
 
+  peer0.org1.example.com:
+    container_name: peer0.org1.example.com
+    extends:
+      file:  base/docker-compose-base.yaml
+      service: peer0.org1.example.com
+    networks:
+      - byfn
+
+  peer1.org1.example.com:
+    container_name: peer1.org1.example.com
+    extends:
+      file:  base/docker-compose-base.yaml
+      service: peer1.org1.example.com
+    networks:
+      - byfn
+
+  peer0.org2.example.com:
+    container_name: peer0.org2.example.com
+    extends:
+      file:  base/docker-compose-base.yaml
+      service: peer0.org2.example.com
+    networks:
+      - byfn
+
+  peer1.org2.example.com:
+    container_name: peer1.org2.example.com
+    extends:
+      file:  base/docker-compose-base.yaml
+      service: peer1.org2.example.com
+    networks:
+      - byfn
+
   cli:
     container_name: cli
     image: hyperledger/fabric-tools:$IMAGE_TAG
@@ -26,8 +65,8 @@ services:
     environment:
       - GOPATH=/opt/gopath
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
-      #- CORE_LOGGING_LEVEL=DEBUG
-      - CORE_LOGGING_LEVEL=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - FABRIC_LOGGING_SPEC=INFO
       - CORE_PEER_ID=cli
       - CORE_PEER_ADDRESS=peer0.org1.example.com:7051
       - CORE_PEER_LOCALMSPID=Org1MSP
@@ -46,3 +85,9 @@ services:
         - ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
     depends_on:
       - orderer.example.com
+      - peer0.org1.example.com
+      - peer1.org1.example.com
+      - peer0.org2.example.com
+      - peer1.org2.example.com
+    networks:
+      - byfn
