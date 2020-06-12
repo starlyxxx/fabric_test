@@ -1,0 +1,114 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+---
+Organizations:
+    - &OrdererOrg
+        Name: OrdererOrg
+        ID: OrdererMSP
+        MSPDir: crypto-config/ordererOrganizations/example.com/msp
+
+    - &Org1
+        Name: Org1MSP
+        ID: Org1MSP
+        MSPDir: crypto-config/peerOrganizations/org1.example.com/msp
+
+    - &Org2
+        Name: Org2MSP
+        ID: Org2MSP
+        MSPDir: crypto-config/peerOrganizations/org2.example.com/msp
+    
+    - &Org3
+        Name: Org3MSP
+        ID: Org3MSP
+        MSPDir: crypto-config/peerOrganizations/org3.example.com/msp
+
+    - &Org4
+        Name: Org4MSP
+        ID: Org4MSP
+        MSPDir: crypto-config/peerOrganizations/org4.example.com/msp
+
+    - &Org5
+        Name: Org5MSP
+        ID: Org5MSP
+        MSPDir: crypto-config/peerOrganizations/org5.example.com/msp
+
+    - &Org6
+        Name: Org6MSP
+        ID: Org6MSP
+        MSPDir: crypto-config/peerOrganizations/org6.example.com/msp
+
+    - &Org7
+        Name: Org7MSP
+        ID: Org7MSP
+        MSPDir: crypto-config/peerOrganizations/org7.example.com/msp
+
+    - &Org8
+        Name: Org8MSP
+        ID: Org8MSP
+        MSPDir: crypto-config/peerOrganizations/org8.example.com/msp
+
+    - &Org9
+        Name: Org9MSP
+        ID: Org9MSP
+        MSPDir: crypto-config/peerOrganizations/org9.example.com/msp
+
+    - &Org10
+        Name: Org10MSP
+        ID: Org10MSP
+        MSPDir: crypto-config/peerOrganizations/org10.example.com/msp
+
+Orderer: &OrdererDefaults
+
+    OrdererType: solo
+    Addresses:
+        - orderer.example.com:7050
+    BatchTimeout: 2s
+    BatchSize:
+        MaxMessageCount: 500
+        AbsoluteMaxBytes: 99 MB
+        PreferredMaxBytes: 2048 KB
+    Kafka:
+        Brokers:
+            - 127.0.0.1:9092
+    Organizations:
+Application: &ApplicationDefaults
+    Organizations:
+
+Profiles:
+
+    ThreeOrgsOrdererGenesis:
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *OrdererOrg
+        Consortiums:
+            SampleConsortium:
+                Organizations:
+                    - *Org1
+                    - *Org2
+                    - *Org3
+                    - *Org4
+                    - *Org5
+                    - *Org6
+                    - *Org7
+                    - *Org8
+                    - *Org9
+                    - *Org10
+    ChannelAll:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org1
+                - *Org2
+                - *Org3
+                - *Org4
+                - *Org5
+                - *Org6
+                - *Org7
+                - *Org8
+                - *Org9
+                - *Org10

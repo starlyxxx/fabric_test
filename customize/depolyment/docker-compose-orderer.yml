@@ -1,0 +1,31 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: '2'
+
+networks:
+    fabric:
+
+services:
+
+    orderer.example.com:
+        extends:
+            file: docker-compose-base.yml
+            service: orderer
+        container_name: orderer.example.com
+        environment:
+            - ORDERER_HOST=orderer.example.com
+        volumes:
+            - ../crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/var/hyperledger/msp
+            - ../crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls:/var/hyperledger/tls
+            - ../channel-artifacts/:/var/hyperledger/configs
+        networks:
+          fabric:
+             aliases:
+               - net
+        ports:
+          - 7050:7050
+        extra_hosts:
+#######################
