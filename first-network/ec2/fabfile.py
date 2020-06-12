@@ -7,7 +7,7 @@ from io import BytesIO
 import math
 from fabric import ThreadingGroup as Group
 
-your_git_username = "XinStarly"
+your_git_username = ""
 your_git_password = ""
 filename = 'customize'
 
